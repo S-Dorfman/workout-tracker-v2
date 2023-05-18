@@ -3,7 +3,7 @@
 
 const mongoose = require('mongoose');
 
-const exercise = require('./exercise');
+// const exercise = require('./exercise');
 
 
 // Mongoose schema - structure/blueprint - defining the properties 
@@ -16,7 +16,15 @@ const workoutSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    exercises: [exercise]
+    exerciseName1: {
+        type: String,
+    },
+    exerciseName2: {
+        type: String,
+    },
+    exerciseName3: {
+        type: String,
+    },
     },
     {timestamps: true}
 )
