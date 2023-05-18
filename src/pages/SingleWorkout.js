@@ -24,9 +24,11 @@ function SingleWorkoutPage() {
 
   return (
     <div>
-      <h1>Workout: {workoutLogs.muscleGroup}</h1>
-      
-      <p>Date: {workoutLogs.createdAt}</p>
+      <h2>Workout</h2><p>Date: {workoutLogs.workoutDate}</p>
+      <h2>{workoutLogs.muscleGroup}</h2>
+      <p>Exercise 1: {workoutLogs.exerciseName1}</p>
+      <p>Exercise 2: {workoutLogs.exerciseName2}</p>
+      <p>Exercise 3: {workoutLogs.exerciseName3}</p>
       
       
       <a href="/workouts">Back to Workout History</a>
