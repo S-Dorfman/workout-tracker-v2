@@ -74,6 +74,8 @@ async function editWorkout(req, res) {
 
 //*delete
 
+
+
 module.exports = {
     create,
     view,

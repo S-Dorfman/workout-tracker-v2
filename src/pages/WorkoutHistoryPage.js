@@ -5,6 +5,7 @@ import * as workoutAPI from '../../src/utilities/workout-api';
 function WorkoutHistoryPage() {
   const [workoutLogs, setWorkoutLogs] = useState([]);
 
+  //* useEffect to display all workouts in DB
   useEffect(function () {
     async function fetchWorkoutLogs() {
       const workoutLogs = await workoutAPI.view();
@@ -13,15 +14,30 @@ function WorkoutHistoryPage() {
     fetchWorkoutLogs();
   }, [])
 
-
   // try {
   //   const workoutLogs = await workoutAPI.view();
-  //   console.log(workoutLogs);
   //   setWorkoutLogs(workoutLogs);
   // } catch (error) {
   //   console.log("error")
   // }
 // };
+
+//* handle delete function
+
+const handleDelete = async (e, workoutLog) => {
+  console.log(workoutLog);
+  e.preventDefault();
+
+  // try {
+  //   const deletedWorkout = await workoutAPI.deleteWorkout(workoutLog);
+  //   console.log(deletedWorkout);
+  //   const workoutLogs = await workoutAPI.view();
+  //   console.log(workoutLogs);
+  //   setWorkoutLogs(workoutLogs);
+  // } catch (error) {
+  //   console.log("Delete Failed");
+  // }
+};
 
   return (
     <div>
@@ -35,9 +51,19 @@ function WorkoutHistoryPage() {
           <a href={`/workouts/${workoutLog._id}`}>{' '}{workoutLog.muscleGroup}</a>
           </nav> 
           {workoutLog.createdAt}
+          <br />
+
           <button type="submit" value="PUT">
           <a href={`/workouts/${workoutLog._id}/edit`}>Edit</a>
           </button>
+          {" "} | {" "}
+          <button 
+          type="submit" 
+          value="DELETE"
+          onClick={(e) => handleDelete(e, workoutLog._id)}>
+          Delete
+          </button>
+          
           </div>
         )
       })}

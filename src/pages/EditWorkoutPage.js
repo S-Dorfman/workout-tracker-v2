@@ -5,9 +5,9 @@ import * as workoutAPI from '../utilities/workout-api';
 
 function EditWorkoutPage() {
   //* handle edit form data
-  const [showAddExercise, setShowAddExercise] = useState(false);
+  // const [showAddExercise, setShowAddExercise] = useState(false);
   const [workout, setWorkout] = useState();
-  const [exercise, setExercise] = useState()
+  // const [exercise, setExercise] = useState()
 // getting the data of the workout to be edited
   // Grab workoutId from params
   const { workoutId } = useParams();
@@ -24,7 +24,7 @@ function EditWorkoutPage() {
 
     async function fetchWorkout() {
       const changeData = await workoutAPI.singleWorkout(workoutId);
-      // setChange(changeData);
+      setChange(changeData);
       console.log(changeData);
       setWorkout(changeData)
     }
@@ -38,16 +38,16 @@ function EditWorkoutPage() {
   const handleWorkoutChange = (e) => {
     setWorkout({...workout, [e.target.name]: e.target.value})
   }
-  const handleExercise = (e) => {
-    setExercise({...exercise, [e.target.name]: e.target.value})
-  }
+  // const handleExercise = (e) => {
+  //   setExercise({...exercise, [e.target.name]: e.target.value})
+  // }
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(workout)
-    console.log(exercise)
+    // console.log(exercise)
     const workoutData = {
       ...workout,
-      exercises: exercise
+      // exercises: exercise
     }
     const res = workoutAPI.editWorkout(workoutId, workoutData)
   }
@@ -70,10 +70,18 @@ function EditWorkoutPage() {
         Date/Time:
         <input type="datetime-local" name="workoutDate" value={workout?.workoutDate} onChange={(e) => setDate(e.target.value)}/>
         <br />
-        <h3 onClick={() => setShowAddExercise(!showAddExercise)}>
+        Exercise 1:
+        <input type="text" name="exerciseName1" value={workout?.exerciseName1} onChange={handleChange}/>
+        Exercise 2:
+        <input type="text" name="exerciseName2" value={workout?.exerciseName2} onChange={handleChange}/>
+        Exercise 2:
+        <input type="text" name="exerciseName3" value={workout?.exerciseName3} onChange={handleChange}/>
+
+
+        {/* <h3 onClick={() => setShowAddExercise(!showAddExercise)}>
           Add exercise
-        </h3>
-        {showAddExercise && (
+        </h3> */}
+        {/* {showAddExercise && (
           <form>
             <label>
               Exercise:
@@ -88,7 +96,7 @@ function EditWorkoutPage() {
               <input type="number" min="1" max="100" name="reps" value={exercise?.reps} onChange={handleChange}/>
             </label>
           </form>
-        )}
+        )} */}
         <input type="submit" value="Submit Changes" />
       </form>
     </div>
