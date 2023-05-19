@@ -17,6 +17,8 @@ router.get('/workouts', workoutCtrl.view);
 router.get('/workouts/:workoutId', workoutCtrl.singleWorkout);
 
 router.put('/:workoutId/edit', workoutCtrl.editWorkout);
+
+router.delete('/workouts/:id', workoutCtrl.deleteWorkout);
 // router.post('/login', usersCtrl.login);
 // router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 

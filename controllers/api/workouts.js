@@ -75,9 +75,9 @@ async function editWorkout(req, res) {
 //*delete
 async function deleteWorkout(req, res) {
     console.log("DELETE CONTROLLER FUNCTION")
-    console.log(req.params.workoutId)
+    console.log(req.params.id)
     try {
-      const workout = await Workout.findByIdAndRemove(req.params.workoutId);
+      const workout = await Workout.findByIdAndRemove(req.params.id);
       res.json(workout);
     } catch (e) {
       res.status(400).json({ msg: e.message });

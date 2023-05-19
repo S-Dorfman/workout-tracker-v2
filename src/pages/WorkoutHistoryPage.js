@@ -31,7 +31,7 @@ const handleDelete = async (e, workoutLog) => {
 
   try {
     const deletedWorkout = await workoutAPI.deleteWorkout(workoutLog);
-    console.log(deletedWorkout);
+    console.log("deletedWorkout");
     const workoutLogs = await workoutAPI.view();
     console.log(workoutLogs);
     setWorkoutLogs(workoutLogs);
@@ -51,7 +51,13 @@ const handleDelete = async (e, workoutLog) => {
           <nav>
           <a href={`/workouts/${workoutLog._id}`}>{' '}{workoutLog.muscleGroup}</a>
           </nav> 
-          {workoutLog.createdAt}
+          {workoutLog.workoutDate}
+          <br />
+          {workoutLog.exerciseName1}
+          {" "}
+          {workoutLog.exerciseName2}
+          {" "}
+          {workoutLog.exerciseName3}
           <br />
 
           <button 
