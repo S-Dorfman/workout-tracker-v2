@@ -30,6 +30,9 @@ export async function editWorkout(workoutId, workoutData) {
 }
 
 //* Delete workouts
+export async function deleteWorkout(workoutId) {
+  return sendRequest(`${BASE_URL}/${workoutId}`, "DELETE");
+}
 
 /*--- Helper Functions ---*/
 

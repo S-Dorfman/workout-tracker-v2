@@ -25,18 +25,19 @@ function WorkoutHistoryPage() {
 //* handle delete function
 
 const handleDelete = async (e, workoutLog) => {
+  console.log("HANDLE DELETE FUNCTION")
   console.log(workoutLog);
   e.preventDefault();
 
-  // try {
-  //   const deletedWorkout = await workoutAPI.deleteWorkout(workoutLog);
-  //   console.log(deletedWorkout);
-  //   const workoutLogs = await workoutAPI.view();
-  //   console.log(workoutLogs);
-  //   setWorkoutLogs(workoutLogs);
-  // } catch (error) {
-  //   console.log("Delete Failed");
-  // }
+  try {
+    const deletedWorkout = await workoutAPI.deleteWorkout(workoutLog);
+    console.log(deletedWorkout);
+    const workoutLogs = await workoutAPI.view();
+    console.log(workoutLogs);
+    setWorkoutLogs(workoutLogs);
+  } catch (error) {
+    console.log("Delete Failed");
+  }
 };
 
   return (
@@ -53,8 +54,12 @@ const handleDelete = async (e, workoutLog) => {
           {workoutLog.createdAt}
           <br />
 
-          <button type="submit" value="PUT">
-          <a href={`/workouts/${workoutLog._id}/edit`}>Edit</a>
+          <button 
+          type="submit" 
+          value="PUT">
+          <a href={`/workouts/${workoutLog._id}/edit`}>
+            Edit
+            </a>
           </button>
           {" "} | {" "}
           <button 
@@ -71,7 +76,6 @@ const handleDelete = async (e, workoutLog) => {
     </div>
   ) 
 }
-
 
 
 
